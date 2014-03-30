@@ -78,3 +78,20 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+
+
+// Examples
+
+Route::filter('birthdaybefore', function()
+{
+  //if (date('d/m/y') == '12/12/84') {
+  if (true) {
+      return View::make('birthday');
+    }
+});
+
+Route::filter('birthdayafter', function()
+{
+  return;
+});
