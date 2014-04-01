@@ -95,3 +95,8 @@ Route::filter('birthdayafter', function()
 {
   return;
 });
+
+Route::filter('onlybrogrammers', function()
+{
+  return;
+});

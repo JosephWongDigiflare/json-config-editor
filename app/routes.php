@@ -15,11 +15,16 @@
 
 Route::get('/', function()
 {
-    return View::make('simple');
+	//return View::make('form');
+
+    return Form::fullName('my_field');
 });
 
-
 Route::get('test', function()
+{
+  var_dump(DB::select('select * from test'));
+});
+Route::post('test', function()
 {
   var_dump(DB::select('select * from test'));
 });
@@ -27,6 +32,12 @@ Route::get('test', function()
 Route::get('questions', function()
 {
   return View::make('hello');
+});
+
+// Example with blade templating
+Route::get('example', function()
+{
+    return URL::asset('img/logo.png');
 });
 
 // Example showing how to pass values from url to site
@@ -80,3 +91,81 @@ Route::get('/birthday', array(
        return View::make('hello');
     }
 ));
+
+// Example where a condition is applied
+Route::get('save/{princess}', function($princess)
+{
+    return "Sorry, {$princess} is in another castle. :(";
+})->where('princess', '[A-Za-z]+');
+
+// Example with route encapsulation
+Route::group(array('before' => 'onlybrogrammers'), function()
+{
+
+    // First Route
+    Route::get('/first', function() {
+        return 'Dude!';
+    });
+
+    // Second Route
+    Route::get('/second', function() {
+        return 'Duuuuude!';
+    });
+
+    // Third Route
+    Route::get('/third', function() {
+        return 'Come at me bro.';
+    });
+
+});
+
+// Example now prfixes books in front of everything
+Route::group(array('prefix' => 'books'), function()
+{
+
+    // First Route
+    Route::get('/first', function() {
+        return 'The Colour of Magic';
+    });
+
+    // Second Route
+    Route::get('/second', function() {
+        return 'Reaper Man';
+    });
+
+    // Third Route
+    Route::get('/third', function() {
+        return 'Lords and Ladies';
+    });
+
+});
+
+
+// Example domain based routing
+Route::group(array('domain' => 'myapp.dev'), function()
+{
+    Route::get('my/route', function() {
+        return 'Hello from myapp.dev!';
+    });
+});
+
+Route::group(array('domain' => 'another.myapp.dev'), function()
+{
+    Route::get('my/route', function() {
+        return 'Hello from another.myapp.dev!';
+    });
+});
+
+Route::group(array('domain' => 'third.myapp.dev'), function()
+{
+    Route::get('my/route', function() {
+        return 'Hello from third.myapp.dev!';
+    });
+});
+
+// Example Url generation
+
+Route::get('/current/url', function()
+{
+	return URL::current(); // strips get params, use URL::full()
+});

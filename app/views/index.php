@@ -7,6 +7,6 @@
     <title>Views!</title>
 </head>
 <body>
-    <p>I wish I were a squirrel!</p>
+    <p>HURRRR DURRRRR!</p>
 </body>
 </html>
