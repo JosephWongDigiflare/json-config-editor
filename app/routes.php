@@ -15,9 +15,14 @@
 
 Route::get('/', function()
 {
-	//return View::make('form');
+	echo "test";
+	// $game = Game::find(1);
+	//    echo $game->name;
+	//echo $game;
+});
 
-    return Form::fullName('my_field');
+Route::get('jkma', function() {
+	return View::make('jkma');	
 });
 
 Route::get('test', function()
