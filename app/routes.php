@@ -25,6 +25,26 @@ Route::get('jkma', function() {
 	return View::make('jkma');	
 });
 
+Route::post('jkma', function() {
+  $data = Input::all();
+  var_dump($data);
+  
+  echo $data['text_filename'];
+  
+  $myfile = fopen("/home/action/data/newfile.txt", "w") or die("Unable to open file!");
+  $txt = "John Doe\n";
+  fwrite($myfile, $txt);
+  $txt = "Jane Doe\n";
+  fwrite($myfile, $txt);
+  fclose($myfile);
+  
+	return View::make('jkma');	
+});
+
+Route::get('editor', function() {
+  return View::make('editor');
+});
+
 Route::get('test', function()
 {
   var_dump(DB::select('select * from test'));

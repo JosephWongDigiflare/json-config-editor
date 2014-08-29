@@ -1,17 +1,18 @@
-<?php
+@extends('layouts.base')
 
-/*sup foo
-LOOK AT ME CHATs
+@section('body')
 
-now can you see my type?
+<div class="container">
+	
+	<h1>YOLO SWAG 420</h1>
+	<p>Wigger.</p>
+	
+	<?php
 
-yeh man
 
-ohhhh so l*eet
-*/
 
 function helloworld() {
-  echo 'hello world';
+	echo 'hello world<br>';
 }
 
 function shittyloop($count, $yolo) {
@@ -22,4 +23,22 @@ function shittyloop($count, $yolo) {
 
 
 helloworld();
-shittyloop(10,"YOLO");	
+//shittyloop(50, "hurrdurrr");
+//shittyloop(100, "YOLO");
+//shittyloop(100, "OLOY");
+
+$period = '3M';
+if (isset($_GET["period"])) {
+  $period = $_GET["period"];
+}
+if (isset($_GET["ticker"])) {
+  $ticker = $_GET["ticker"];
+  echo "<img src=\"http://www.google.com/finance/getchart?q=$ticker&p=$period\" />";
+}
+
+	
+	?>
+</div> <!-- /container -->
+<script src="js/bootstrap.min.js"></script>
+@stop
+
